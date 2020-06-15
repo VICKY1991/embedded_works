@@ -26,5 +26,21 @@ int main()
     MPU6050_obj1.getMPU6050Data(); // from this class
     MPU6050_obj1.storeSensorData(9.9, 1.1, 2.2);
     MPU6050_obj1.getMPU6050Data();
+
+    // create pointer of base class
+    Sensors *bptr, baseObj;
+    float calibData[] = {1.1, 2.2, 3.3};
+    
+    // assign the base class object address to the base clas pointer
+    bptr = &baseObj;
+    bptr->calibrateSensor(calibData, 3); // invoke the virtual function
+
+    // create objects of the two derived classses
+    MPU5050 objx;
+    bptr = &objx;
+
+    bptr->calibrateSensor(calibData, 2);
+
+     
     return 0;
 }

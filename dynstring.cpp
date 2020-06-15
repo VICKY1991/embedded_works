@@ -13,7 +13,20 @@ char* dynString::operator+(char s1[])
 
     return (char*)this->str;
 }
-    
+
+
+//------------------------------- for the base sensors ---------------------------------------------------------//
+void Sensors::calibrateSensor(float calib_params[], int n)
+{
+    int i;
+    //
+    for(i = 0; i < n; i++)
+    {
+        this->raw_data += n*n;
+    }
+
+    cout<<"calibrated with base sensor : "<<this->raw_data<<endl;
+}
 
 //----------------------------------- for MPU6050 --------------------------------------------------------------------------------------------//
 
@@ -26,6 +39,7 @@ void MPU6050::storeSensorData(float g_x, float g_y, float g_z)
 
 }
 
+
 void MPU6050::getMPU6050Data()
 {
     float offset;
@@ -37,6 +51,19 @@ void MPU6050::getMPU6050Data()
     offset = Sensors::getCalibData(); // it is same as writing getCalibData(), just makes it more clear and explicit
 
     cout<<"offset : "<<offset<<endl;
+}
+
+
+void MPU6050::calibrateSensor(float calib_data[], int n)
+{
+    int i;
+    //
+    for(i = 0; i < n; i++)
+    {
+        this->gyro_x += n*n;
+    }
+
+    cout<<"calibrated with MPU6050 class sensor : "<<this->gyro_x<<endl;
 }
 
 //--------------------------- For MPU5050 ------------------------------------------------------------------------------------------------------//
@@ -59,4 +86,17 @@ void MPU5050::getMPU5050Data()
     offset = Sensors::getCalibData(); // it is same as writing getCalibData(), just makes it more clear and explicit
 
     cout<<"offset : "<<offset<<endl;
+}
+
+
+void MPU5050::calibrateSensor(float calib_data[], int n)
+{
+    int i;
+    //
+    for(i = 0; i < n; i++)
+    {
+        this->gyro_x += n*n;
+    }
+
+    cout<<"calibrated with MPU5050 class sensor : "<<this->gyro_x<<endl;
 }

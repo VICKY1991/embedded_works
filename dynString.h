@@ -40,7 +40,10 @@ class Sensors
 
 public:
 
-    Sensors();
+    Sensors()
+    {
+        cout<<"default base constructor\n";
+    }
     //
     // parameterized constructor
     Sensors(float offset)
@@ -61,6 +64,9 @@ public:
     {
         return this->raw_data;
     }
+
+    // create a virtual function
+    virtual void calibrateSensor(float [], int);
 
 };
 
@@ -93,6 +99,10 @@ public:
     // member function
     void storeSensorData(float, float, float);
     void getMPU6050Data();
+
+    // declare the inherited virtual function again
+    virtual void calibrateSensor(float[], int);
+    
     
 
 };
@@ -128,6 +138,8 @@ public:
     void storeSensorData(float, float, float);
     void getMPU5050Data();
 
+    // declare the virtual function again
+    virtual void calibrateSensor(float[], int);
 };
 
 #endif
