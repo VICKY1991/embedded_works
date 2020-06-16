@@ -1,5 +1,6 @@
 #include <iostream>
 #include "dynString.h"
+#include "chapter_templates.h"
 
 using namespace std;
 
@@ -41,6 +42,26 @@ int main()
 
     bptr->calibrateSensor(calibData, 2);
 
+    int n1 = 10;
+    int n2 = 20;
+    float m1 = 23.32, m2 = 45.56;
+
+    cout<<"before swapping n1 : "<<n1<<endl;
+    cout<<"before swapping n2 : "<<n2<<endl;
+
+    swapNums(n1, n2);
+
+    cout<<"after swapping n1 : "<<n1<<endl;
+    cout<<"after swapping n2 : "<<n2<<endl;
+
+    cout<<"before swapping m1 : "<<m1<<endl;
+    cout<<"before swapping m2 : "<<m2<<endl;
+
+    swapNums(m1, m2);
+
+    cout<<"after swapping m1 : "<<m1<<endl;
+    cout<<"after swapping m2 : "<<m2<<endl;
+  
      
     return 0;
 }
