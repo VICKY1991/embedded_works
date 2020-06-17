@@ -4,6 +4,8 @@
 
 using namespace std;
 
+void exceptionHandlingDemo();
+
 int main()
 {
     char *ret;
@@ -61,7 +63,30 @@ int main()
 
     cout<<"after swapping m1 : "<<m1<<endl;
     cout<<"after swapping m2 : "<<m2<<endl;
-  
+    
+    exceptionHandlingDemo();
      
     return 0;
+}
+
+
+
+void exceptionHandlingDemo()
+{
+    int a = 10, b = 0;
+
+    // demonstrate a divide by 0 exception
+    try
+    {
+        if(b == 0)
+            throw -1;
+
+        cout<<a/b<<endl;
+        
+    }
+    catch(...)
+    {
+        cout<<"divide by 0 exception"<<endl;
+    }
+    
 }
