@@ -1,10 +1,57 @@
 #include <iostream>
 #include "dynString.h"
 #include "chapter_templates.h"
+#include <fstream>
 
 using namespace std;
 
 void exceptionHandlingDemo();
+void formattedIODemo();
+
+
+
+void fileIODemo()
+{
+    char inBuff[4], inBuff1[20];
+    int age;
+    //
+    // create streams
+    ofstream writer;
+    ifstream reader;
+
+    writer.open("sample.txt", ios::out); // open this file in write mode, create if not present already
+
+    if(!writer)
+        cout<<"File creation/opening failed\n";
+
+    else
+    {
+        cout<<"File opened and ready for writing\n";
+        // write something into it
+        char str[] = "sambit mohapatra, hello how are you 1991?\n";
+        writer<<str;
+    }
+
+    writer.close(); // close the file
+    
+    reader.open("sample.txt", ios::in); // open file in read mode
+    if(!reader)
+        cout<<"File opening failed, is it present?\n";
+
+    else
+    {
+        reader>>inBuff;
+        reader>>age;
+        reader>>inBuff1;
+
+        cout<<inBuff;
+        cout<<age;
+    }
+    
+        
+    reader>>inBuff; // some reading
+
+}
 
 int main()
 {
@@ -65,6 +112,10 @@ int main()
     cout<<"after swapping m2 : "<<m2<<endl;
     
     exceptionHandlingDemo();
+
+    formattedIODemo();
+
+    fileIODemo();
      
     return 0;
 }
@@ -89,4 +140,16 @@ void exceptionHandlingDemo()
         cout<<"divide by 0 exception"<<endl;
     }
     
+}
+
+/*
+* Demo the formatted io flags
+*/
+void formattedIODemo()
+{
+    // set the hex flag
+    cout.setf(ios::hex);
+    cout.setf(ios::showbase);
+    cout<< 0x64 <<endl;
+
 }
