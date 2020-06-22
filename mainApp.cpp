@@ -2,12 +2,14 @@
 #include "dynString.h"
 #include "chapter_templates.h"
 #include <fstream>
+#include <vector>
+#include <cctype>
 
 using namespace std;
 
 void exceptionHandlingDemo();
 void formattedIODemo();
-
+void demoVectors();
 
 
 void fileIODemo()
@@ -52,6 +54,8 @@ void fileIODemo()
     reader>>inBuff; // some reading
 
 }
+
+
 
 int main()
 {
@@ -116,6 +120,8 @@ int main()
     formattedIODemo();
 
     fileIODemo();
+
+    demoVectors();
      
     return 0;
 }
@@ -151,5 +157,32 @@ void formattedIODemo()
     cout.setf(ios::hex);
     cout.setf(ios::showbase);
     cout<< 0x64 <<endl;
+
+}
+
+
+
+void demoVectors()
+{
+    // create 2 float vectors
+    vector<float> fvec1(5), fvec2(5);
+
+    int i;
+    //
+    for(i = 0; i < 5; i++)
+    {
+        fvec1[i] = i; // iitialize the vectors
+        fvec2[i] = i*i; // initialize the second vector
+
+    }
+
+    // display size of vector
+    cout<<"size : "<<fvec1.size()<<endl;
+
+    // print the  type of the data
+    cout<<typeid(fvec1).name()<<endl;
+
+    // add the vectors
+    // vector<float> sum_vec = fvec2 + fvec1;
 
 }
