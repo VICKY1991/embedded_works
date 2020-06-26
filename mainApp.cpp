@@ -4,56 +4,16 @@
 #include <fstream>
 #include <vector>
 #include <cctype>
+#include "vectorApps.hpp"
 
 using namespace std;
 
 void exceptionHandlingDemo();
 void formattedIODemo();
 void demoVectors();
+void fileIODemo();
 
 
-void fileIODemo()
-{
-    char inBuff[4], inBuff1[20];
-    int age;
-    //
-    // create streams
-    ofstream writer;
-    ifstream reader;
-
-    writer.open("sample.txt", ios::out); // open this file in write mode, create if not present already
-
-    if(!writer)
-        cout<<"File creation/opening failed\n";
-
-    else
-    {
-        cout<<"File opened and ready for writing\n";
-        // write something into it
-        char str[] = "sambit mohapatra, hello how are you 1991?\n";
-        writer<<str;
-    }
-
-    writer.close(); // close the file
-    
-    reader.open("sample.txt", ios::in); // open file in read mode
-    if(!reader)
-        cout<<"File opening failed, is it present?\n";
-
-    else
-    {
-        reader>>inBuff;
-        reader>>age;
-        reader>>inBuff1;
-
-        cout<<inBuff;
-        cout<<age;
-    }
-    
-        
-    reader>>inBuff; // some reading
-
-}
 
 
 
@@ -122,6 +82,8 @@ int main()
     fileIODemo();
 
     demoVectors();
+
+    disp();
      
     return 0;
 }
@@ -184,5 +146,49 @@ void demoVectors()
 
     // add the vectors
     // vector<float> sum_vec = fvec2 + fvec1;
+
+}
+
+
+void fileIODemo()
+{
+    char inBuff[4], inBuff1[20];
+    int age;
+    //
+    // create streams
+    ofstream writer;
+    ifstream reader;
+
+    writer.open("sample.txt", ios::out); // open this file in write mode, create if not present already
+
+    if(!writer)
+        cout<<"File creation/opening failed\n";
+
+    else
+    {
+        cout<<"File opened and ready for writing\n";
+        // write something into it
+        char str[] = "sambit mohapatra, hello how are you 1991?\n";
+        writer<<str;
+    }
+
+    writer.close(); // close the file
+    
+    reader.open("sample.txt", ios::in); // open file in read mode
+    if(!reader)
+        cout<<"File opening failed, is it present?\n";
+
+    else
+    {
+        reader>>inBuff;
+        reader>>age;
+        reader>>inBuff1;
+
+        cout<<inBuff;
+        cout<<age;
+    }
+    
+        
+    reader>>inBuff; // some reading
 
 }
